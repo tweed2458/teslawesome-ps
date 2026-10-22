@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_text">Un service d’arrière-plan qui permet à l’application TeslAwesome de se connecter à votre PlayStation.</string>
+    <string name="get_teslawesome">Obtenir TeslAwesome sur Google Play</string>
+    <string name="open_teslawesome">Ouvrir TeslAwesome</string>
+    <string name="about_source">Code source</string>
+    <string name="legal_title">Mentions légales</string>
+    <string name="legal_copyright">TeslAwesome PS — © 2026 TeslAwesome.\n\nBasé sur :\n• chiaki — © Florian Märkl et les contributeurs de Chiaki\n• chiaki-ng — © Street Pea et les contributeurs de chiaki-ng\n• CloudPad — © Chazq2023 et les contributeurs de CloudPad</string>
+    <string name="legal_warranty">Ce programme est un logiciel libre : vous pouvez le redistribuer et/ou le modifier selon les termes de la GNU Affero General Public License, version 3, avec l’exception OpenSSL, telle que publiée par la Free Software Foundation.\n\nIl est distribué dans l’espoir d’être utile, mais SANS AUCUNE GARANTIE, sans même la garantie implicite de QUALITÉ MARCHANDE ou d’ADÉQUATION À UN USAGE PARTICULIER. Voir la licence ci-dessous pour plus de détails.</string>
+    <string name="legal_source">Le code source complet de cette version est disponible en ligne :</string>
+    <string name="legal_licence">GNU Affero General Public License, version 3 (texte officiel en anglais)</string>
+</resources>

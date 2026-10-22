@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: LicenseRef-AGPL-3.0-only-OpenSSL
+
+package com.tals.psbridge.cloud
+
+/**
+ * Custom exceptions for cloud streaming errors
+ * Mirrors error handling in gui/src/cloudstreaming/psgaikaistreaming.cpp
+ */
+
+/** PS Plus subscription required error (eventCode 002.2001) */
+class PsPlusSubscriptionException(message: String) : Exception(message)
+
+/** A required CloudPad update is pending (VersionGuard), so no stream may be started. Its own
+ *  blocking popup tells the user; launch callers show nothing extra for this. */
+class UpdateRequiredException : Exception("A required CloudPad update must be installed first")
+
+/** Account privacy settings need to be updated */
+class AccountPrivacySettingsException(val upgradeUrl: String, message: String) : Exception(message)
+
+/** Ping timeout error */
+class PingTimeoutException(message: String) : Exception(message)
+
+/** The manually selected datacenter isn't in the batch Gaikai offered for this session */
+class DatacenterNotOfferedException(message: String) : Exception(message)
+
+/** Gaikai offered a batch that's usable but far worse than a datacenter this device has measured before */
+class DistantDatacenterBatchException(message: String) : Exception(message)
+
+/** Authorization failed */
+class AuthorizationFailedException(message: String) : Exception(message)
+
+/** General Gaikai allocation error */
+class GaikaiAllocationException(message: String) : Exception(message)
+
+/** Gaikai rejected the entitlement outright — the title isn't cloud-streamable for this account */
+class GameNotStreamableException(message: String) : Exception(message)
+
+/** Kamaji session error */
+class KamajiSessionException(message: String) : Exception(message)
+
+/** A pre-ordered game whose unlock time (by Sony's clock, not the device's) hasn't passed yet. */
+class GameNotReleasedException(val availableFromMs: Long, message: String) : Exception(message)

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- The launcher icon opens TeslAwesome when it is installed: it has to be visible. -->
+    <queries>
+        <package android:name="com.tals.teslawesome" />
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+        <!-- What the launcher icon opens: TeslAwesome when installed, otherwise
+             what this is and the way to TeslAwesome on Google Play. -->
+        <activity
+            android:name=".AboutActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- The AGPL's legal notices; exported so TeslAwesome's PlayStation card can open it. -->
+        <activity
+            android:name=".LegalActivity"
+            android:exported="true" />
+
+        <!-- Open to binding on purpose: a signature permission is never granted to a
+             client installed before this app. Binding only keeps the service alive; the
+             socket it serves checks that the peer carries this app's signature
+             (ModuleService). -->
+        <service
+            android:name=".ModuleService"
+            android:exported="true" />
+    </application>
+</manifest>

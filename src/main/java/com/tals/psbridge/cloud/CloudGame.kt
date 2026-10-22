@@ -1,0 +1,68 @@
+// SPDX-License-Identifier: LicenseRef-AGPL-3.0-only-OpenSSL
+
+package com.tals.psbridge.cloud
+
+/**
+ * Best-known streamability for a Library game's tile badge.
+ * STREAMABLE/NOT_STREAMABLE can come either from a catalog-derived guess (STREAMABLE only, when
+ * Sony's public catalog confirms streamingSupported=true) or from a real launch attempt, which
+ * always wins over the catalog guess and persists until another real attempt changes it.
+ */
+enum class StreamableStatus { STREAMABLE, NOT_STREAMABLE, UNKNOWN }
+
+/**
+ * Represents a game in the cloud catalog (PSNow or PSCloud)
+ */
+data class CloudGame(
+	val productId: String,
+	val name: String,
+	val imageUrl: String,  // Cover/box art (type 10) - for game cards
+	val landscapeImageUrl: String = imageUrl,  // Landscape (type 12/13) - for loading dialog
+	val thumbnailUrl: String = imageUrl,
+	val platform: String = "ps4", // "ps4", "ps3", or "ps5"
+	val serviceType: String = "psnow", // "psnow" or "pscloud"
+	val conceptUrl: String = "", // URL to add game to library (PS5 games)
+	val conceptId: String = "", // Imagic conceptId for catalog dedupe (PS5 cloud)
+	val isOwned: Boolean = false, // Whether user owns this game (PS5 games)
+	val entitlementId: String = "", // PSCloud: entitlement id from cross-reference (Qt gameData.id)
+	val storeProductId: String = "", // PSCloud: product_id from entitlements API (stream this, not entitlementId)
+	val plusCatalog: Boolean = false, // In the PS Plus subscription catalog (vs full streamable universe)
+	// Add-a-game filter tags, from list membership in Sony's imagic lists (see PsCloudCatalogService).
+	// Separate from plusCatalog, which is tied to streaming/ownership matching and only set for
+	// entries Sony marks streamable — most PS Plus titles are listed with streaming off.
+	val psCatalog: Boolean = false, // Listed in a PS Plus catalog list: can be added via PS Plus, no purchase
+	val freeToPlay: Boolean = false, // Listed in the free-to-play list: nothing to purchase either
+	// Included with a PS Plus subscription (Game Catalog / monthly game) per the PS Store listing — not
+	// merely offered a trial or a member discount.
+	// Not cached with the catalog — tagged on afterwards from a separately cached lookup, see
+	// PsStorePlusService / CloudGameRepository.loadPsPlusKeys.
+	val psPlus: Boolean = false,
+	val featureType: Int = 0, // PSN entitlement feature_type: 3=full game, 1=trial/free, 0=add-on/DLC
+	val streamableStatus: StreamableStatus = StreamableStatus.UNKNOWN, // Library tile badge state
+	// Owned games only: when Sony unlocks the entitlement (epoch ms, 0 = no restriction). A
+	// pre-ordered game is entitled — and Gaikai will even authorize a session for it — before its
+	// release, so launches are blocked client-side until this passes. See PsCloudOwnership.isReleased.
+	val availableFromMs: Long = 0L,
+	// Owned games only: Sony's time when availableFromMs was last fetched from Sony. A saved copy
+	// fetched before the unlock time can't reveal the game — Sony may have moved the date since.
+	val releaseCheckedAtMs: Long = 0L
+)
+
+/**
+ * Internal session state for PSN authentication
+ */
+internal data class PsnSession(
+	val oauthCode: String,
+	val jsessionId: String,
+	val baseUrl: String
+)
+
+/**
+ * Result wrapper for API operations
+ */
+sealed class PsnResult<out T>
+{
+	data class Success<T>(val data: T) : PsnResult<T>()
+	data class Error(val message: String, val exception: Exception? = null) : PsnResult<Nothing>()
+}
+

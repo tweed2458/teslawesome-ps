@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    TeslAwesome's launcher artwork with a controller under it (ic_launcher_image.png,
+    drawn from the app's own icon), inset like TeslAwesome's so it sits inside the
+    adaptive icon's safe zone rather than bleeding to the edges.
+-->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_launcher_image"
+    android:inset="16%" />

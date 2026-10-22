@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PS Plus cloud allocation steps (from CloudPad), shown on the phone while a cloud game starts. -->
+    <string name="gaikai_progress_client_ids">Getting Client IDs - Step 1 of 10</string>
+    <string name="gaikai_progress_config">Getting Configuration - Step 2 of 10</string>
+    <string name="gaikai_progress_start_session">Starting Session - Step 3 of 10</string>
+    <string name="gaikai_progress_tokens">Getting Tokens - Step 4 of 10</string>
+    <string name="gaikai_progress_server_tokens">Getting Server Tokens - Step 5 of 10</string>
+    <string name="gaikai_progress_authorize_session">Authorizing Session - Step 6 of 10</string>
+    <string name="gaikai_progress_lock_session">Locking Session - Step 7 of 10</string>
+    <string name="gaikai_progress_datacenters">Getting Datacenters - Step 8 of 10</string>
+    <string name="gaikai_progress_pinging_datacenters">Pinging Datacenters - Step 8 of 10</string>
+    <string name="gaikai_progress_selecting_datacenter">Selecting Datacenter (%1$s) - Step 9 of 10</string>
+    <string name="gaikai_progress_allocating_slot">Allocating Streaming Slot - Step 10 of 10</string>
+    <string name="gaikai_error_allocation_cancelled">Allocation cancelled</string>
+    <string name="gaikai_error_client_ids">Failed to get client IDs</string>
+    <string name="gaikai_error_config">Failed to get config</string>
+    <string name="gaikai_error_start_session">Failed to start session — %1$s</string>
+    <string name="gaikai_error_auth_code">Failed to get gkClientId auth code</string>
+    <string name="gaikai_error_server_auth_code">Failed to get server auth code</string>
+    <string name="gaikai_error_authorize_session">Failed to authorize session</string>
+    <string name="gaikai_error_lock_session">Failed to lock session</string>
+    <string name="gaikai_error_datacenters">Failed to get datacenters</string>
+    <string name="gaikai_error_no_datacenters">No datacenters available</string>
+    <string name="gaikai_error_allocate_slot">Failed to allocate slot</string>
+    <string name="gaikai_error_response_incomplete">Allocation response incomplete</string>
+    <string name="gaikai_error_missing_launch_slot">Allocation response invalid: missing launchSlot</string>
+    <string name="gaikai_progress_closing_old_session">Closing old session - Attempt %1$d</string>
+    <string name="gaikai_progress_migrating_data">Migrating data (%1$d%%) - Attempt %2$d</string>
+    <string name="gaikai_progress_allocating_slot_queue">Allocating streaming slot - Queue position: %1$d - Attempt %2$d</string>
+    <string name="gaikai_progress_allocating_slot_attempt">Allocating streaming slot - Attempt %1$d</string>
+</resources>
